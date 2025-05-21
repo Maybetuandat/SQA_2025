@@ -1,0 +1,424 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+/* Body Styles */
+body {
+    position: relative;
+    font-family: Arial, sans-serif;
+    /* font-family: 'Unbounded', sans-serif; */
+    background-color: #f0f0f0;
+
+}
+
+@media only screen and (max-width: 1430px) {
+    .option-container {
+        /* display: block !important; */
+        position: relative !important;
+        margin: 0px auto;
+        width: 70%;
+        display: block;
+    }
+
+    .detail-container {
+        display: block !important;
+        position: relative !important;
+        /* width: 400% !important; */
+        margin: 20px auto !important;
+        display: block;
+    }
+
+}
+
+@media only screen and (max-width: 958px) {
+    .fix-call {
+        display: none;
+    }
+
+    .nav-element {
+        display: none;
+    }
+
+    .menu-button {
+        display: flex !important;
+    }
+
+
+
+    .option-container h1 {
+        margin: 10px 0px !important;
+    }
+
+}
+
+a {
+    text-decoration: none;
+    color: #fff !important;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #ad171c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+textarea {
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+.empty-text {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.yellow-text {
+    color: red;
+}
+
+.green-text {
+    color: #008000;
+}
+
+/* Header Styles */
+.header {
+
+    position: fixed;
+    width: 100%;
+    background-color: #ad171c;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    justify-items: center;
+
+}
+
+.menu-button {
+    display: none;
+    position: absolute;
+    right: 100px;
+    font-size: 26px;
+    justify-items: center;
+    margin-top: 15px;
+}
+
+.nav-logo {
+    display: flex;
+    /* justify-items: center; */
+
+}
+
+.img-logo {
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+
+    margin-left: 15px;
+    /* Đặt khoảng cách bao quanh hình ảnh */
+}
+
+
+
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    display: block;
+
+
+
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    font-size: 20px;
+    right: 200px;
+}
+
+.nav-element {
+    margin: 15px 20px;
+}
+
+.avt-logo {
+    display: flex;
+    position: absolute;
+    right: 30px;
+    justify-items: center;
+    margin-top: 6px;
+}
+
+.img-avt {
+    background-color: #fff;
+    border-radius: 50%;
+    /* padding: 5px; */
+
+    margin-left: 10px;
+    /* Đặt khoảng cách bao quanh hình ảnh */
+}
+
+.avt-logo img {
+    width: 40px;
+    height: 40px;
+    display: block;
+
+
+
+}
+
+.header-title {
+    display: flex;
+    font-size: 24px;
+    margin-left: 30px;
+    font-weight: 550;
+    text-align: center;
+}
+
+.header-title a {
+    display: flex;
+    align-items: center;
+
+}
+
+
+.container {
+    width: 100%;
+}
+
+.select button {
+    margin: 20px 0;
+}
+
+.option-container {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    max-width: 500px;
+
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail-container {
+    /* display: none; */
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    max-width: 900px;
+    width: 900px;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* option các thứ */
+.option-container h1 {
+    font-size: 24px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.test-description {
+    margin-bottom: 5px;
+}
+
+#description-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#description-form input,
+#description-form textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* CSS cho phần select */
+.select {
+    margin-bottom: 5px;
+}
+
+.option-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.option-form select,
+.option-form input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.option-form button {
+    margin-right: 20px;
+}
+
+.question-content {
+    /* display: flex; */
+    border: 3px solid #ad171c;
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 50px;
+}
+
+.question-container {
+    margin-left: 60px;
+}
+
+/* new */
+/* .question-container textarea {
+    margin-top: 50px;
+} */
+
+.question-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+
+}
+
+
+.answer-container {
+    margin-left: 50px;
+    display: flex;
+    margin: 10px;
+
+}
+
+.add-btn {
+    background-color: #ad171c;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    font-size: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.delete-question {
+    position: absolute;
+    right: 75px;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-color: #ad171c;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.delete-question :hover {
+    background-color: #555;
+}
+
+
+
+.checkbox {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ad171c;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+
+/* footer  */
+#footer {
+    position: absolute;
+    top: 1000px;
+    padding: 20px 16px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 70px;
+    color: #000 !important;
+    /* background-color: #ad171c; */
+
+
+}
+
+.social-list {
+    font-size: 24px;
+}
+
+.social-list a {
+    color: #000 !important;
+    text-decoration: none;
+}
+
+.social-list a:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.copyright {
+    margin-top: 15px;
+    color: #000;
+}
+
+.copyright a {
+    text-decoration: none;
+    color: #000 !important;
+}
+
+.fix-call {
+
+
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+
+}
+
+.fix-call button {
+    background-color: #ad171c;
+    width: 60px;
+    height: 60px;
+    border-radius: 50% !important;
+}
+
+.fix-call i {
+    font-size: 24px;
+}

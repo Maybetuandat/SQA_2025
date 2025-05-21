@@ -1,0 +1,35 @@
+.fixed-plugin
+    a.fixed-plugin-button.text-dark.position-fixed.px-3.py-2
+        i.ti-settings
+    .card.shadow-lg
+        .card-header.pb-0.pt-3
+            .float-start
+                h5.mt-3.mb-0 Material UI Configurator
+                p See our dashboard options.
+        // End Toggle Button
+        hr.horizontal.dark.my-1
+        .card-body.pt-sm-3.pt-0
+            // Sidebar Backgrounds
+            div
+                h6.mb-0 Sidebar Colors
+            a.switch-trigger.background-color(href='javascript:void(0)')
+                .badge-colors.my-2.text-start
+                    span.badge.filter.bg-gradient-primary.active(data-color='primary' onclick='sidebarColor(this)')
+                    span.badge.filter.bg-gradient-dark(data-color='dark' onclick='sidebarColor(this)')
+                    span.badge.filter.bg-gradient-info(data-color='info' onclick='sidebarColor(this)')
+                    span.badge.filter.bg-gradient-success(data-color='success' onclick='sidebarColor(this)')
+                    span.badge.filter.bg-gradient-warning(data-color='warning' onclick='sidebarColor(this)')
+                    span.badge.filter.bg-gradient-danger(data-color='danger' onclick='sidebarColor(this)')
+            // Sidenav Type
+            .mt-3
+                h6.mb-0 Sidenav Type
+                p.text-sm Choose between 2 different sidenav types.
+            .d-flex
+                button.btn.bg-gradient-dark.px-3.mb-2.active(data-class='bg-gradient-dark' btn-bg-slide-dark) Dark
+                button.btn.bg-gradient-dark.px-3.mb-2.ms-2(data-class='bg-white' btn-bg-slide-white) White
+            p.text-sm.d-xl-none.d-block.mt-2 You can change the sidenav type just on desktop view.
+            .mt-2.d-flex
+                h6.mb-0 Light / Dark
+                .form-check.form-switch.ps-0.ms-auto.my-auto
+                    input#dark-version.form-check-input.mt-1.ms-auto(type='checkbox' onclick='darkMode(this)')
+            hr.horizontal.dark.my-sm-4

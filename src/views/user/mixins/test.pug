@@ -1,0 +1,24 @@
+mixin testMixin(test)
+    .test-item.align-items-center
+        .container(style="margin-left: 1%; padding: 0; max-width: 100%;")
+            .row.align-items-center(style="margin: 0; padding: 0;")
+                .col-md-1.col-3
+                    img.img-fluid(src=test.img_url, style="width: 100%; height: auto; border-radius: 5px; border: 2px solid #c0b0b0")
+                .col-md-4.col-3
+                    .content-test-name(style="color: #c32b2b;") #{test.TenBaithi}
+                    .content-test-detail(style="margin-top:10px;") Chủ đề: #{test.TheLoai}
+                    
+                .col-md-5.col-0.d-none.d-md-block
+                    - var testDate = new Date(test.ThoiGianBatDau)
+                    - var ngay = testDate.getDate()
+                    - var thang = testDate.getMonth() + 1 // Lưu ý: getMonth trả về giá trị từ 0 đến 11
+                    - var nam = testDate.getFullYear()
+                    .content-test-detail Bắt đầu: #{ngay}/#{thang}/#{nam}
+                    .content-test-detail Số câu: #{test.SoLuongCau}
+                    .content-test-detail Thời Gian: #{test.ThoiGianThi} phút
+                .col-md-2.col-4.col-sm-3.text-center
+                    a.btn.btn-primary.btn-enter-test(
+                        btn-detail-test-user,
+                        idTest=test.MaBaiThi
+                        style="width: 130px; font-size: 18px; height: 50px; border-radius: 10px; padding: 10px 20px; color: white; border: none; text-align: center; text-decoration: none; display: inline-block;"
+                    ) Vào thi

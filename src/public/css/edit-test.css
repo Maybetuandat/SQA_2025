@@ -1,0 +1,119 @@
+.empty-text {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.yellow-text {
+    color: red;
+}
+
+.green-text {
+    color: #008000;
+}
+
+.checkedColor {
+    background-color: #c32b2b !important;
+    /* color: #ffff; */
+}
+
+.question-content {
+    /* display: flex; */
+    border: 1px solid #c32b2b;
+    border-radius: 2px;
+    padding: 10px 10px;
+    margin-bottom: 50px;
+}
+
+.question-container {
+    margin-left: 60px;
+}
+
+.question-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.answer-container {
+    margin-left: 50px;
+    display: flex;
+    margin: 10px;
+}
+
+.checked {
+    background-color: #c32b2b !important;
+    color: #ffff !important;
+}
+
+.add-btn {
+    background-color: #c32b2b;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-question {
+    position: absolute;
+    margin-top: 50px;
+    right: 60px;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #c32b2b;
+    background-color: #ffff;
+    color: #c32b2b;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-question:hover {
+    background-color: #555;
+}
+
+.question-title {
+    display: block;
+}
+
+.submit-btn {
+    color: #ffff !important;
+}
+
+.question-title textarea {
+    flex: 1;
+    width: 89%;
+    box-sizing: border-box;
+}
+
+
+.checkbox {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #c32b2b;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+/* Thêm responsive */
+@media (max-width: 768px) {
+    .question-container {
+        margin-left: 0;
+    }
+
+    .answer-container {
+        margin-left: 0;
+    }
+}

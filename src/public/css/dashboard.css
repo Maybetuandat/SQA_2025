@@ -1,0 +1,168 @@
+/* charts */
+.graphBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    min-height: 200px;
+}
+
+.graphBox .box {
+    position: relative;
+    background: white;
+    padding: 20px;
+    width: 90%;
+    box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    grid-gap: 20px;
+
+}
+
+.cardBox-dashboard {
+    position: relative;
+    width: 96%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+
+.cardBox-dashboard .card-dashboard {
+
+
+    position: relative;
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    grid-gap: 20px;
+    cursor: pointer;
+
+}
+
+
+.cardBox-dashboard .card-dashboard:hover {
+    background: palegreen;
+    color: black;
+}
+
+.cardBox-dashboard .card-dashboard .number-dashboard {
+    position: relative;
+    font-size: 2em;
+    font-weight: 500;
+    color: #333;
+}
+
+.cardBox-dashboard .card-dashboard .cardName-dashboard {
+    position: relative;
+    color: #999;
+}
+
+.cardBox-dashboard .card-dashboard .iconBox-dashboard {
+    position: relative;
+    font-size: 2.5em;
+    color: #03a9f4;
+}
+
+.iconBox-dashboard {
+    position: relative;
+    font-size: 2.5em;
+    color: #03a9f4;
+}
+
+
+
+.details-dashboard {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: 3fr;
+
+}
+
+.details-dashboard .topuser-dashboard {
+    position: relative;
+    display: grid;
+    min-height: 400px;
+    background: white;
+    padding: 20px;
+}
+
+.cardHeader-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+
+}
+
+.cardHeader-dashboard h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.details-dashboard .topuser-dashboard .iconBox-dashboard {
+    position: relative;
+    font-size: 1.5em;
+    color: black;
+
+}
+
+.details-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.details-dashboard thead {
+    background: rgb(216, 201, 204);
+    color: black;
+    font-weight: 600;
+}
+
+.details-dashboard tbody {
+    background: #7cbad6;
+    color: black;
+
+}
+
+
+
+.details-dashboard table thead td {
+    font-weight: 600;
+
+}
+
+
+.details-dashboard .topuser-dashboard table,
+td {
+
+    height: 70px;
+
+}
+
+.details-dashboard .topuser-dashboard table tbody tr:hover {
+    background: #03a9f4;
+    color: white;
+
+}
+
+
+
+@media (max-width < 991px) {
+    .graphBox {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+}

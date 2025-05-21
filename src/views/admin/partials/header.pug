@@ -1,0 +1,38 @@
+include ../mixins/itemSlider.pug
+
+.sidebar( slide-bar-item )
+  .sidebar-inner
+    .sidebar-logo
+          .peers.ai-c.fxw-nw
+            .peer.peer-greed
+              a(class="sidebar-link td-n" href="/result")
+                .peers.ai-c.fxw-nw
+                  .peer
+                    .logo
+                      img(src="assets/static/images/logo.png" alt="")
+                  .peer.peer-greed
+                    h5(class="lh-1 mB-0 logo-text" name-admin) Adminator
+            .peer
+              .mobile-toggle.sidebar-toggle
+                a(href="" class="td-n")
+                  i(class="ti-arrow-circle-left")
+    ul.sidebar-menu.scrollable.pos-r
+        +normal-item('Trang chủ', 'ti-view-grid c-red-500','/admin/dashboard')
+        +item-arrow('Quản lý', 'ti-home c-red-500',
+        [
+          {title:"Quản lý bài thi", href:"/admin/test"},
+          {title:"Quản lý tài khoản", href:"/admin/account"}
+        ])
+        +item-arrow('Kết quả', 'ti-harddrives c-red-500',
+            [
+                {title: 'Kết quả bài thi', href: '/admin/result/test'},
+                {title: 'Kết quả sinh viên', href: '/admin/result/student'}
+            ])
+        //- +item-arrow('Thống kê', 'ti-bar-chart c-red-500',
+        //- [
+        //-   {title:"Thống kê sinh viên", href:"/index"},
+        //-   {title:"Thống kê bài thi", href:"/index"}
+        //- ])
+        +normal-item('Yêu cầu hỗ trợ', 'ti-email c-red-500', '/admin/message/B21DCCN343')
+        +normal-item('Phân quyền', 'ti-lock c-red-500', '/admin/permission')
+

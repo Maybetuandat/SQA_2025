@@ -1,0 +1,12 @@
+extends ../../layout/default.pug
+include ../../mixins/accountTable.pug
+include ../../mixins/pagination.pug
+include ../../mixins/studentPopup.pug
+include ../../mixins/editStudentpopup.pug
+block main
+  .container-fluid.py-4
+    +account-table(students, pagination)
+    +student-popup
+    +edit-student-popup
+
+

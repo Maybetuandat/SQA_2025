@@ -1,0 +1,13 @@
+mixin question(index, question, answers, userAnswer)
+  .question
+    p Câu #{index}: #{question.content}
+    each answer in answers
+        if answer.Dung === 1
+            .right
+                p #{answer.MaLuaChon}. #{answer.NoiDung}
+        else if userAnswer && userAnswer === answer.MaLuaChon
+            .wrong
+                p #{answer.MaLuaChon}. #{answer.NoiDung}
+        else
+            .answer
+                p #{answer.MaLuaChon}. #{answer.NoiDung}

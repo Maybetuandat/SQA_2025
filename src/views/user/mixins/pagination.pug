@@ -1,0 +1,19 @@
+mixin pagination(pagination)
+  nav 
+    ul(class="pagination")
+      li(class="page-item")
+        button(class="page-link" button-pagination = 1) Trở về trang đầu
+
+      if(pagination.currentPage > 1)
+        li(class="page-item")
+          button(class="page-link" button-pagination = pagination.currentPage - 1) Trang trước
+
+      - for(var i=1; i<=pagination.totalPages; i++)
+        li(class=`page-item ${pagination.currentPage == i ? "active" : ""}`)
+          button(class="page-link" button-pagination = i) #{i}
+      if(pagination.currentPage < pagination.totalPages)
+        li(class="page-item")
+          button(class="page-link" button-pagination = pagination.currentPage + 1) Kế tiếp
+
+      li(class="page-item")
+        button(class="page-link" button-pagination = pagination.totalPages) Đi đến trang cuối

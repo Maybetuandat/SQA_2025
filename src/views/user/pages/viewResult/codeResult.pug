@@ -1,0 +1,38 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+
+block main
+  br
+  h4 Danh sách bài lập trình đã làm
+  if submitList == null || submitList.length == 0
+    p Không có dữ liệu
+  else
+    table(class="table table-striped")
+      thead
+        tr
+          th ID
+          th Date
+          th Problem
+          th Status
+          th Language
+          th Summary
+          th Detail
+      tbody
+          each submit, index in submitList
+              tr
+                td 
+                  strong #{submit.id}
+                td #{submit.date}
+                td 
+                  strong #{submit.problem.name}
+                if submit.result.status.name === 'accepted'
+                    td(style="color: #00BB00;") 
+                      strong #{submit.result.status.name}
+                else
+                    td(style="color: red;") 
+                      strong #{submit.result.status.name}
+                td #{submit.compiler.version.name}
+                td #{submit.result.time}s #{submit.result.memory}KB
+                td
+                  a.btn.btn-primary(btn-detail-submit idSubmit = submit.id ) Review
+  +pagination(pagination)

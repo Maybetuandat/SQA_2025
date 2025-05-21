@@ -1,0 +1,27 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+
+block main
+  br
+  h4 Problems
+  if codeList == null || codeList.length == 0
+    p Không có dữ liệu
+  else
+    table(class="table table-striped")
+      thead
+        tr
+          th ID
+          th Problem
+          th Created
+          th Solve
+      tbody
+          each code, index in codeList
+              tr
+                td #{index + 1}
+                td 
+                  strong #{code.TenVanDe}
+                
+                td #{code.ThoiGianTao}
+                td
+                    a.btn.btn-primary(btn-widget idProb = code.MaVanDe) Solve
+  //-   +pagination(pagination)

@@ -1,0 +1,44 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+
+block main
+  p.title(style="font-size:26px;font-weight:bold;") #{test.TenBaithi}
+  .row.align-items-center.justify-content-between.mb-6
+    .d-flex.align-items-center
+      span.title Lớp:
+      .dropdown.ml-2
+        button.btn.btn-primary.dropdown-toggle#dropdownButton(type='button' data-bs-toggle='dropdown')
+          | #{className}
+        ul.dropdown-menu
+          each lop, index in [1,2,3,4,5,6,7,8,9,10]
+            li
+              - var lopStr = "DCCN" + ("0" + lop).slice(-2)
+              a.dropdown-item(data-class = lopStr) #{lopStr}
+          li
+            a.dropdown-item(data-class = "all") Tất cả
+      .search-wrapper.d-flex.align-items-center.ml-2
+        input(type="text" class="form-control search-box" tim-kiem-stu placeholder="---Tìm kiếm---" value=keyword)
+        button.btn.btn-light(btn-loc-stu) Lọc
+  hr
+  h5 Danh sách sinh viên
+  if studentList == null || studentList.length == 0
+    p Không có dữ liệu
+  else
+    table(class="table table-striped")
+      thead
+        tr
+          th STT
+          th Mã sinh viên
+          th Họ và tên
+          th Lớp
+          th Chi tiết
+      tbody
+        - if (studentList)
+            each student, index in studentList
+              tr
+                td #{index + 1}
+                td #{student.MSV}
+                td #{student.Ten}
+                td #{student.Lop}
+                td
+                  a.btn.btn-primary( idStu = student.MSV btn-detail) Xem chi tiết

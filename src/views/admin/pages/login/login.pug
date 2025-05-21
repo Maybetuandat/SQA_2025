@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    //- Required meta tags
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="/css/owl.carousel.min.css" )
+    //- Bootstrap CSS
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    //- Style
+    link(rel="stylesheet", href="/css/loginUser.css")
+    if data && data.title
+        title= data.title
+    else
+         title Admin
+  body
+    .content
+      .container
+        .row
+          .col-md-6
+            img(src="/static/images/undraw_remotely_2j6y.svg", alt="Image", class="img-fluid")
+          .col-md-6.contents
+            .row.justify-content-center
+              .col-md-8
+                .mb-4
+                h1.text Quizz App
+                br
+                form(action="/admin/checkLoginAdmin", method="post")
+                  .form-group.first
+                    input(type="text", class="form-control", id="username", name = "username", placeholder="Tài khoản" Required)
+                  br
+                  .form-group.last.mb-4
+                    input(type="password", class="form-control", id="password", name ="password", placeholder="Mật khẩu" Required) 
+                  input(type="submit", value="Đăng Nhập", class="btn btn-block", style="background-color: #c32b2b; color:white;")
+                br
+                if data && data.message
+                 p.aler= data.message

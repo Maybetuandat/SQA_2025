@@ -1,0 +1,45 @@
+extends ../../layout/default.pug
+
+block main
+  br
+  br
+  .container
+    .col-md-12
+      .row
+        .col-md-3
+        .col-md-2
+          .text-center
+            img.profile-img(src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png", alt="Profile Image")
+        .col-md-2
+          .text-left
+            h5(style="font-weight:bold;") #{admin.UserName}
+            p #{admin.Email}
+        .col-md-5
+    br
+    .col-md-12.text-right
+      button.btn.btn-primary.btn-sm#editBtn Chỉnh sửa thông tin
+    hr
+    .col-md-12
+      .row
+        .col-md-6
+          .form-group
+            label(for="firstname") Họ tên:
+            input.form-control(type="text", id="Ten", value= admin.Ten, readonly)
+          .form-group
+            label(for="lastname") Mã sinh viên:
+            input.form-control(type="text", id="MSV", value=admin.MSV, readonly)
+          .form-group
+            label(for="password") Lớp:
+            input.form-control(type="text", id="Lop", value=admin.Lop, readonly)
+
+        .col-md-6
+          .form-group
+            label(for="facebook") Tài khoản:
+            input.form-control(type="text", id="TaiKhoan", value= admin.TaiKhoan, readonly)
+          
+          .form-group
+            label(for="zalo") Email:
+            input.form-control(type="text", id="Email", value= admin.Email, readonly)
+    br
+    .col-md-12.text-center
+      button.btn.btn-primary.hide#saveBtn Lưu

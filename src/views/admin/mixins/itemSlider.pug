@@ -1,0 +1,24 @@
+mixin item-arrow(title, icon, items, id)
+  li.nav-item.dropdown(btn-nav-tag)
+    a.dropdown-toggle.btn-nav(button-dropdown-item #{id})
+      span.icon-holder
+        i(class= icon)
+      span.title= title
+      span(class="arrow" arrow)
+        i.ti-angle-right
+    ul.dropdown-menu
+      each item in items
+        li
+          a.sidebar-link(href= item.href) #{item.title}
+mixin normal-item(title, icon, href, id)
+  li.nav-item.mT-30(btn-nav-tag)
+      a.sidebar-link.btn-nav(#{id} href= href )
+        span.icon-holder
+          i(class= icon)
+        span.title= title
+mixin itemtest(title)
+  li.nav-item
+    a.nav-link.text-black
+      .text-black.text-center.me-2.d-flex.align-items-center.justify-content-center
+        i.opacity-10 dashboard
+          span.nav-link-text.ms-1 #{title}

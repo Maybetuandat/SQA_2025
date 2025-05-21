@@ -1,0 +1,46 @@
+extends ../../layout/default.pug
+
+block main
+  br
+  br
+  .container
+    .col-md-12
+      .row
+        .col-md-3
+        .col-md-2
+          .text-center
+            img.profile-img(src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png", alt="Profile Image")
+        .col-md-2
+          .text-left
+            h5(style="font-weight:bold;") #{admin.UserName}
+            p #{admin.Email}
+        .col-md-5
+    br
+
+    hr
+    .col-md-12
+      .row
+        .col-md-6
+          .form-group
+            label(for="firstname") First Name:
+            input.form-control(type="text", id="firstname", value= admin.FirstName, readonly)
+          .form-group
+            label(for="lastname") Last Name:
+            input.form-control(type="text", id="lastname", value=admin.LastName, readonly)
+          .form-group
+            label(for="password") Password:
+            input.form-control(type="password", id="password", value=admin.Pass, readonly)
+
+        .col-md-6
+          .form-group
+            label(for="facebook") Facebook:
+            input.form-control(type="text", id="facebook", value= admin.Facebook, readonly)
+          .form-group
+            label(for="instagram") Instagram:
+            input.form-control(type="text", id="instagram", value= admin.Instagram, readonly)
+          .form-group
+            label(for="zalo") Vai trò:
+            input.form-control(type="text", id="zalo", value= admin.Role_id, readonly)
+    br
+    .col-md-12.text-center
+      button.btn.btn-primary.hide#saveBtn() Lưu

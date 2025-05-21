@@ -1,0 +1,19 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+include ../../mixins/test.pug
+
+
+block main
+  br
+  .search-wrapper.d-flex.align-items-center
+    input(type="text" class="form-control search-box-test" tim-kiem-test placeholder="---Tìm kiếm---" value=keyword)
+    button.btn.btn-light(btn-loc-test) Lọc
+  br
+  h4 Danh sách bài thi
+  .test-list
+    if (tests === null)
+      p Không có bài thi nào
+    else
+      each test in tests
+        +testMixin(test)
+  +pagination(pagination)

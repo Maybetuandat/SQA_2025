@@ -1,0 +1,34 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+include ../../mixins/question.pug
+block main
+  .container
+    .row.mt-3
+      .col-md-12
+        p.test-name #{test.TenBaithi}
+        table.table.table-striped
+          tbody
+            tr
+              th.title-table-infor(scope="row" colspan="2" class="text-left") Thông tin sinh viên
+              th.title-table-infor(scope="row" colspan="2" class="text-left ml-5") Thông tin bài thi
+            tr
+              th(scope="row" class="text-left") Tên:
+              td.text-left #{student.Ten}
+              th(scope="row" class="text-left") Thời gian bắt đầu:
+              td.text-left 08:00:00
+            tr
+              th(scope="row" class="text-left") Mã SV:
+              td.text-left #{student.MSV}
+              th(scope="row" class="text-left") Thời gian kết thúc:
+              td.text-left 08:30:00
+            tr
+              th(scope="row" class="text-left") Lớp:
+              td.text-left #{student.Lop}
+              th(scope="row" class="text-left") Điểm:
+              td.text-left #{result.Diem}
+    .row.mt-3
+      .col-md-12
+        p.test-name Chi tiết các câu hỏi
+        .overflow-auto.list-question
+          each question, index in detail
+            +question(index + 1, question.question.DeBai, question.question.LuaChon, question._detail.MaLuaChon)

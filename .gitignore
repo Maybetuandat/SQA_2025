@@ -1,0 +1,9 @@
+node_modules
+.env
+config.json
+src\config.json
+src\config\config.json
+src\config\connectDB.js
+src\config\database.config.js
+package-lock.json
+package.json

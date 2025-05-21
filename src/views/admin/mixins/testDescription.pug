@@ -1,0 +1,72 @@
+mixin test-description(metadata)
+    .container-fluid.mt-4
+    .card.mb-4
+        .card-header.pb-0.ptit-color.c-white
+            h5.mb-10 Tạo mới bài thi
+        .card-body
+            .container
+                .option-container#option-container
+                    .test-description.row
+                        .col-md-6
+                            form#description-form
+                                .form-group
+                                    label(for='examName') Tên bài thi:
+                                    if metadata
+                                        input.form-control(type='text' id="examName" value=metadata.TenBaithi required)
+                                    else
+                                        input.form-control(type='text' id="examName" required)
+                                .form-group
+                                    label(for='specificExamTime') Thời gian (phút):
+                                    if metadata
+                                        input.form-control(type='number' id='examTime' value = metadata.ThoiGianThi required)
+                                    else
+                                        input.form-control(type='number' id='examTime'  required)
+                                .form-group 
+                                    label(for="examDate") Ngày thi:
+                                    if metadata
+                                        input.form-control(type="date" id="examDate" value = metadata.date)
+                                    else
+                                        input.form-control(type="date" id="examDate" required)
+                                .form-group
+                                    label(for="") Giờ thi:
+                                    if metadata
+                                        input.form-control(type="time" id="timeStart" value = metadata.time)
+                                    else 
+                                        input.form-control(type="time" id="timeStart")
+                                .form-group
+                                    label(for='numQuestions') Số lượng câu hỏi:
+                                    if metadata
+                                        input.form-control(type='number'  id='numQuestions' value = metadata.SoLuongCau )
+                                    else
+                                        input.form-control(type='number'  id='numQuestions' )
+                        .col-md-6
+                            form#option-form
+                                .form-group
+                                    label(for='examDescription') Mô tả:
+                                    textarea.form-control#examDescription(cols='40', rows='2')
+                                .form-group
+                                    label(for='fileOption') Hình thức: 
+                                    select.form-control#fileOption
+                                        option(value='new') Nhập thủ công
+                                        option(value='upload') Tải lên file
+                                .form-group#fileUpload(style='display: none;')
+                                    label(for='excelFile') Tải lên tệp (Excel):
+                                    input.form-control-file(type='file', id='excel-file', name='excelFile', accept='.xls,.xlsx')
+                                .form-group 
+                                    label(for='testImage') Ảnh bài thi:   
+                                    input.form-control-file(type='file', id='image-file', name='imageFile', accept='.jpg,.png')
+                                .form-group
+                                    if metadata
+                                        img(src=metadata.img_url, height="120")
+                                    else 
+                                        img(src='https://res.cloudinary.com/dyc1c2elf/image/upload/v1714894653/hpz5yqojda1ajpnrpkvv.jpg', height="120")
+            .form-group.ml-5
+                button.btn.ptit-color.text-white.mr-5(type='submit', onclick='render()') Tạo bài thi
+                if metadata
+                    button.btn.ptit-color.text-white.px-4(onclick=`Save('${metadata.MaBaiThi}')`)
+                        i.ti-save
+                else 
+                    button.btn.ptit-color.text-white.px-4(onclick='Save()')
+                        i.ti-save
+
+                    

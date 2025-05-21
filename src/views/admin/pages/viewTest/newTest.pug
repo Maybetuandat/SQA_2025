@@ -1,0 +1,11 @@
+extends ../../layout/default.pug
+include ../../mixins/testDescription
+block main
+    + test-description()
+    .container-fluid.mt-4
+        .card.mb-4
+            .card-header.pb-0.ptit-color.c-white
+                h6.mb-10 Danh sách câu hỏi
+            .card-body
+                #questionsContainer 
+                

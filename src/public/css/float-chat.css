@@ -1,0 +1,152 @@
+/* Floating Chat Button */
+.floating-chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ad171c;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+/* Floating Chat Window */
+#chat-window {
+    display: none;
+    overflow-y: auto;
+    height: 400px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 9998;
+}
+
+/* Chat Messages */
+#chat-messages {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: calc(400px - 100px);
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    /* max-width: 50%; */
+}
+
+/* Floating Chat Header */
+#chat-header {
+    background-color: #ad171c;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #fff;
+}
+
+
+
+/* Tin nhắn của người gửi (self) */
+.self-message {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: auto;
+    margin-right: 5px;
+    padding: 10px;
+    background-color: #ad171c;
+    color: #fff;
+    border-radius: 30px;
+
+    width: fit-content;
+    overflow-y: auto;
+    max-width: 50%;
+
+    word-wrap: break-word;
+    /* IE 5.5-7 */
+    white-space: -moz-pre-wrap;
+    /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;
+
+}
+
+/* Tin nhắn của người nhận (other) */
+.other-message {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    margin-right: auto;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    /* display: inline-block;
+    word-break: break-all; */
+    overflow-y: auto;
+    max-width: 50%;
+    width: fit-content;
+    word-wrap: break-word;
+    /* IE 5.5-7 */
+    white-space: -moz-pre-wrap;
+    /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;
+}
+
+
+/* Chat Footer */
+#chat-footer {
+    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Text Box */
+.text-box {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 10px;
+
+}
+
+/* Send Button */
+#send-msg-button {
+    background-color: #ad171c;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #ad171c;
+}
+
+#close-button {
+    position: absolute;
+    top: 10px;
+    /* điều chỉnh khoảng cách từ đỉnh cửa sổ */
+    right: 10px;
+    /* điều chỉnh khoảng cách từ phải cửa sổ */
+    padding: 5px;
+    margin: 0;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

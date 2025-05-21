@@ -1,0 +1,8 @@
+extends ../../layout/default.pug
+include ../../mixins/testTable.pug
+include ../../mixins/pagination.pug
+block main
+  .container-fluid.py-4
+    +test-table(tests, pagination)
+    //- +pagination(pagination)
+

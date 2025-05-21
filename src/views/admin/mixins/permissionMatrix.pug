@@ -1,0 +1,23 @@
+mixin permission-matrix(roles, permissions, perMatrix)
+    .table-responsive
+        table.table.table-bordered.table-striped.table-hover
+            thead
+                tr
+                    th Permission / Role
+                    each role in roles
+                        th.text-center=role.Name
+            tbody
+                each permission in permissions
+                    tr
+                        td=permission.Name
+                        //- - //console.log(permission)
+                        each role in roles
+                            td.text-center
+                                - const roleId = parseInt(role.Id)
+                                - const permissionId = parseInt(permission.Id)
+                                if perMatrix[roleId - 1] && perMatrix[roleId - 1][permissionId - 1]
+                                    input(type="checkbox" name="permissions" checked)
+                                else
+                                    input(type="checkbox" name="permissions")
+        button.btn.btn-primary(onclick=`SavePermission(${permissions.length})`) Save
+

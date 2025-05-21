@@ -1,0 +1,48 @@
+extends ../../layout/default.pug
+include ../../mixins/pagination.pug
+
+block main
+  .row
+    .col-md-3.d-flex.flex-column.align-items-center
+      .user-info.mb-3
+        .profile__avt(style="width: 170px; height: 170px; border-radius: 10%; overflow: hidden;")
+          img(src="https://cdn-icpc.ptit.edu.vn/ptitcode/profile/HqHnlHD1fFFuiDuQRXQzQrmPqvWXsDA1mFB6dViR.jpg", alt="")
+      p(class = "name") #{student.Ten}
+      //- button.btn.mt-3(type="button") Cập nhật thông tin
+      //- hr
+      table.table.table-borderless
+        tbody
+          tr
+            th(scope="row", class="text-left")
+              p(style="margin-bottom:auto;") MSV:
+            td(class="text-left") #{student.MSV}
+          tr
+            th(scope="row", class="text-left")
+              p(style="margin-bottom:auto;") Lớp:
+            td(class="text-left") #{student.Lop}
+          tr
+            th(scope="row", class="text-left")
+              p(style="margin-bottom:auto;") Email:
+            td(class="text-left") #{student.Email}
+    .col-md-9
+      .courses-list
+        h4 Bài thi đã làm
+        if testList == null || testList.length == 0
+          p Không có dữ liệu
+        else
+          table.table
+            thead
+              tr
+                th STT
+                th Tên bài thi
+                th Điểm
+                th Chi tiết
+            tbody
+              each test, index in testList
+                tr
+                  td #{index + 1}
+                  td #{test.TenBaithi}
+                  td #{test['Results.Diem']}
+                  td
+                    a.btn.btn-primary(btn-detail-test-with-idStu idTest = test.MaBaiThi) Xem chi tiết
+        +pagination(pagination)

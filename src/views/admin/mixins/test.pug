@@ -1,0 +1,24 @@
+mixin testMixin(test)
+    .test-item.align-items-center
+        .container(style="margin-left: 3%; padding: 0; max-width: 100%;")
+            .row.align-items-center(style="margin: 0; padding: 0;")
+                .col-md-1.col-3
+                    img.img-fluid(src=test.img_url, alt="test", style="width: 100%; height: auto; border-radius: 5px;")
+                .col-md-5.col-6
+                    .content-test-name #{test.TenBaithi}
+                    br
+                    - var testDate = new Date(test.ThoiGianBatDau)
+                    - var ngay = testDate.getDate()
+                    - var thang = testDate.getMonth() + 1 // Lưu ý: getMonth trả về giá trị từ 0 đến 11
+                    - var nam = testDate.getFullYear()
+                    .content-test-detail Bắt đầu: #{ngay}/#{thang}/#{nam}
+                .col-md-4.col-0.d-none.d-md-block
+                    .content-test-detail Số Lượng Câu: #{test.SoLuongCau}
+                    br
+                    .content-test-detail Thời Gian: #{test.ThoiGianThi} phút
+                .col-md-2.col-3.col-sm-3.text-center
+                    if test.TrangThai == "Đóng"
+                        .status-test-close Đóng
+                    else
+                        .status-test-open Mở
+                    a.btn.btn-primary(btn-detail-test idTest = test.MaBaiThi) Xem chi tiết

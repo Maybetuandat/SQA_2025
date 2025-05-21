@@ -1,0 +1,22 @@
+mixin student-popup
+    .add-new-student#add-new-student
+        .add-new-student-container
+            h1 Tạo mới sinh viên
+            div
+                label Mã sinh viên
+                input(type='text', id='msv', name='msv', required)
+            div
+                label Họ và tên
+                input(type='text', id='name', name='name', required)
+            div
+                label Lớp
+                input(type='text', id='class', name='class', required)
+            div
+                label Email
+                input(type='email', id='email', name='email', required)
+            div
+                label Mật khẩu
+                input(type='password', id='password', name='password', required)
+            div
+                button.btn.cur-p.ptit-color.btn-color(onclick="submitForm('add-new-student')") Tạo mới
+                button.btn.cur-p.ptit-color.btn-color(type='button' onclick="closePopUp('add-new-student')") Hủy

@@ -1,0 +1,22 @@
+mixin edit-student-popup
+    .add-new-student#edit-student
+        .add-new-student-container
+            h1 Chỉnh sửa
+            div
+                label Mã sinh viên
+                input(type='text', id='edit-msv', name='msv', required)
+            div
+                label Họ và tên
+                input(type='text', id='edit-name', name='name', required)
+            div
+                label Lớp
+                input(type='text', id='edit-class', name='class', required)
+            div
+                label Email
+                input(type='email', id='edit-email', name='email', required)
+            div
+                label Mật khẩu
+                input(type='password', id='edit-password', name='password', required)
+            div
+                button.btn.cur-p.ptit-color.btn-color(onclick="finishEdit('edit-student')") Cập nhật
+                button.btn.cur-p.ptit-color.btn-color(type='button' onclick="closePopUp('edit-student')") Hủy

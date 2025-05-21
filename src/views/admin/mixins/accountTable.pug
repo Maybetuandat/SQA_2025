@@ -1,0 +1,39 @@
+include ./pagination.pug
+mixin account-table(students, pagination)
+    .container-fluid
+        .card.mb-4
+            .card-header.pb-0.ptit-color.c-white
+                h5 Quản lý tài khoản sinh viên
+            .card-body
+                .align-items-center.justify-content-between
+                    .d-flex.align-items-center.mb-3
+                        .search-wrapper.d-flex.align-items-center
+                            input(type="text" class="form-control search-box" tim-kiem placeholder="--- Tìm kiếm ---" value=keyword)
+                            button.btn.cur-p.ptit-color.btn-color(btn-loc).ml-2 Lọc
+                        button.btn.cur-p.ptit-color.btn-color.ml-5
+                            a.submit-btn( onclick=`openPopUp('add-new-student')`)  Tạo mới
+                table.table
+                    thead
+                        tr
+                            th MSV
+                            th Tên sinh viên
+                            th Lớp
+                            th Email
+                            th Chỉnh sửa
+                            th Xóa
+                    tbody 
+                        each student in students
+                            tr(id=student.MSV)
+                                td.fw-600=student.MSV
+                                td=student.Ten
+                                td=student.Lop
+                                td=student.Email
+                                td
+                                    a.mb-0
+                                        button.btn.cur-p.ptit-color.btn-color(onclick=`getStudentData('edit-student','${student.MSV}', '${role}')`) Chỉnh sửa
+                                td
+                                    a.mb-0
+                                        button.btn.btn-primary.ptit-color.btn-color(onclick=`confirmDeleteAccount('${student.MSV}')`) Xóa              
+                +pagination(pagination)
+                    
+            

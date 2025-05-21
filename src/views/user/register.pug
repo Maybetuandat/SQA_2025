@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    // Required meta tags
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    link(href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap", rel="stylesheet")
+    // Bootstrap CSS
+    link(rel="stylesheet", href="/css/owl.carousel.min.css" )
+    // Bootstrap CSS
+    link(rel="stylesheet", href="/css/bootstrap.min.css")
+    // Style
+    link(rel="stylesheet", href="/css/loginUser.css")
+    if data && data.title
+        title= data.title
+    else
+         title Đăng ký tài khoản mới
+  body
+    .content
+      .container
+        .row
+          .col-md-6
+            img(src="/static/images/undraw_remotely_2j6y.svg", alt="Image", class="img-fluid")
+          .col-md-6.contents
+            .row.justify-content-center
+              .col-md-8
+                .mb-4
+                  h3(style="text-align: center;") Đăng ký
+                form(action="/register/createNewUser" method="post")
+                  .form-group.last.mb-4
+                    input.form-control(type="text" id="username" name="name" placeholder="Họ và tên" Required)
+                  .form-group.last.mb-4
+                    input.form-control(type="text" id="password" name="msv" placeholder="Mã sinh viên" Required)
+                  .form-group.last.mb-4
+                    input.form-control(type="text" id="password" name = "class" placeholder="Lớp" Required)
+                  .form-group.last.mb-4
+                    input.form-control(type="email" id="password" name ="email" placeholder="Email" Required)
+                  .form-group.last.mb-4
+                    input.form-control(type="password" id="password" name ="password" placeholder="Mật khẩu" Required)
+                  input.btn.btn-block.btn-primary(type="submit" value="Đăng ký", style="background-color: #c32b2b; color:white;")
+                  br
+                  if data && data.message
+                   p.aler= data.message

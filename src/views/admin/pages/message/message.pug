@@ -1,0 +1,144 @@
+extends ../../layout/default.pug
+block main 
+  script.
+    window.onload = async function () {
+      var url = '/api/get-message/' + '#{room}';
+      const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+
+      const data = await response.json();
+      // console.log(data.length)
+      if (data.data.length > 0) {
+          for (let i = 0; i < data.data.length; i++) {
+              const message = data.data[i];
+              const chatMessages = document.getElementById('chat-messages');
+              const messageDiv = document.createElement('div');
+              messageDiv.className = 'message'
+              const messageElement = document.createElement('li');
+              messageElement.className = message.fromAdmin ? 'self-message' : 'other-message';
+              messageDiv.appendChild(messageElement);
+              messageElement.innerHTML = message.Content;
+              chatMessages.appendChild(messageDiv);
+          }
+      }
+      var chatMessages = document.getElementById('chat-messages');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+  // ### $App Screen Content ###
+  onload="loadAdminMessage(room)"
+  main.main-content.bgc-grey-100#mainContent.mt-200
+    .full-container
+      .peers.fxw-nw.pos-r
+        // Sidebar
+        .peer.bdR#chat-sidebar
+          .layers.h-100
+            // List
+            .layer.w-100.fxg-1.scrollable.pos-r
+              each student of students
+                if student.MSV == room
+                  .peers.fxw-nw.ai-c.p-20.bgc-primary.bgcH-grey-50.cur-p
+                    .peer.peer-greed.pL-20
+                      a(href=`/admin/message/${student.MSV}`).text-white
+                        h6.mB-0.lh-1.fw-400=student.MSV
+                else
+                  .peers.fxw-nw.ai-c.p-20.bgc-white.bgcH-grey-50.cur-p
+                    .peer.peer-greed.pL-20
+                      a(href=`/admin/message/${student.MSV}`).text-dark
+                        h6.mB-0.lh-1.fw-400=student.MSV
+        // Chat Box
+        .peer.peer-greed#chat-box
+          .layers.h-100
+            .layer.w-100
+              // Header
+              .peers.fxw-nw.jc-sb.ai-c.pY-20.pX-30.bgc-white
+                .peers.ai-c
+                  .peer.d-n
+                    a#chat-sidebar-toggle(href='', title='', class='td-n c-grey-900 cH-blue-500 mR-30')
+                      i.ti-menu
+                  .peer.mR-20
+                    img(src='https://res.cloudinary.com/dyc1c2elf/image/upload/v1715441270/qaktgm9jbmsb2lxcm9xp.jpg', alt='', class='w-3r h-3r bdrs-50p')
+                  .peer
+                    - var name = 'Nguyễn Hoàng Hiệp'
+                    - for (var i = 0; i < students.length; i++)
+                      - if (students[i].MSV == room)
+                        - name = students[i].Ten
+                    h6.lh-1.mB-0=name
+                      
+                .peers
+                  a.peer.td-n.c-grey-900.cH-blue-500.fsz-md(href='', title='')
+                    i.ti-more
+            .layer.w-100.fxg-1.bgc-grey-200.scrollable.pos-r
+              // Chat Box
+              .p-20
+                ul#chat-messages
+
+              // Chat Send
+              .p-15.bdT.bgc-white#chatt-footer
+                .pos-r
+                  input.text-box.form-control.bdrs-10em.m-0(placeholder='Nhập tin nhắn...')
+                  button#send-msg-button.btn.btn-primary.bdrs-50p.w-2r.p-0.h-2r.pos-a.r-1.t-1.btn-color(type='button')
+                    i.fa.fa-paper-plane-o
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+  script.
+      //socket
+      const socket = io();
+      const room = '#{room}';
+      socket.emit('join', room);
+      // Xử lý sự kiện khi gửi tin nhắn
+      $('#send-msg-button').click(function() {
+          var message = $('#chatt-footer input.text-box').val();
+        
+          if(message === '') return;
+        // Gửi tin nhắn đến server với thông tin của tin nhắn và phòng
+          socket.emit('message', {name : 'Admin', message: message, room : room});
+          try{
+            var backendUrl = '/api/save-message'
+            var data = {
+              room: room,
+              message: message,
+              isAdmin: true
+            }
+            fetch(backendUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data)
+              })
+                .then(res => res.json())
+                .then(data => {
+                    //console.log(data)
+                })
+                .catch(err => {
+                    //console.log(err)
+                })
+              }
+            catch (err) {
+
+            }
+          $('#chatt-footer input.text-box').val('')
+          return false;
+      });
+
+      // Xử lý sự kiện nhận tin nhắn từ server
+      socket.on('message', function(data) {
+          const messageClass = data.name === 'Admin' ? 'self-message' : 'other-message';
+          const messageDiv = $('<div>');
+          messageDiv.addClass('message'); 
+          const messageElement = $('<li>').addClass(messageClass).text(`${data.message}`);
+          messageDiv.append(messageElement);
+          $('#chat-messages').append(messageDiv);
+
+          var chatMessages = document.getElementById('chat-messages');
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        });

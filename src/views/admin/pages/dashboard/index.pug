@@ -1,0 +1,71 @@
+extends ../../layout/default.pug
+
+block main
+ 
+    .cardBox-dashboard
+        .card-dashboard
+          div
+             
+            .cardName-dashboard Tổng số người dùng
+            .number-dashboard=TongSoNguoiDung
+          .iconBox-dashboard
+            i.fa-solid.fa-user 
+        .card-dashboard
+          div
+            
+            .cardName-dashboard Tổng số bài thi
+            .number-dashboard=TongSoBaiThi
+          .iconBox-dashboard
+             i.fa-solid.fa-file-circle-plus
+        .card-dashboard
+          div
+           
+            .cardName-dashboard Tổng số lượt làm bài
+            .number-dashboard=TongSoKetQua
+          .iconBox-dashboard
+             i.fa-solid.fa-user-pen
+        .card-dashboard
+          div
+            .cardName-dashboard Số lượng tài khoản mới
+            .number-dashboard=NguoiDungMoi
+          .iconBox-dashboard
+             i.fa-solid.fa-user-plus
+
+
+    
+    .graphBox
+      each box in [1, 2] 
+        .box
+          canvas(id=box === 1 ? "done" : "visited")
+    .details-dashboard
+      .topuser-dashboard
+        .cardHeader-dashboard
+          h2 Top user
+        if data3 == null || data3.length == 0
+          p Không có dữ liệu
+        else
+          table
+            thead
+              tr
+                th STT
+                th Ảnh đại diện
+                th Tên
+                th Mã sinh viên
+                th Lớp
+                th Điểm trung bình 
+            tbody
+              each  user,index in data3 
+                tr
+                  td #{index + 1}
+                  td
+                    span.iconBox-dashboard
+                      i.fa-regular.fa-user
+                  td #{user.dataValues.Student.dataValues.Ten} 
+                  td #{user.dataValues.MSV}
+                  td #{user.dataValues.Student.dataValues.Lop} 
+                  td #{user.dataValues.averageScore} 
+    input( type ="hidden" data-view-dashboard = JSON.stringify(data1))
+    input( type ="hidden" data-TheLoai-dashboard = JSON.stringify(data2))
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    script(src="/js/dashboard-chart.js")
+   

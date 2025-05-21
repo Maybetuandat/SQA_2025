@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo mới bài thi</title>
+    <link rel="stylesheet" href="../css/upload-test.css">
+    <link rel="stylesheet" href="../Icon/themify-icons-font/themify-icons/themify-icons.css">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav-logo">
+            <a href="#">
+                <div class="img-logo"> <img src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo"></div>
+            </a>
+        </div>
+        <div class="header-title">
+            <a href="/html/admin-dashboard.html">PTIT TEST</a>
+        </div>
+
+        <div class="nav">
+            <div class="nav-element"><a href="#">Ngân hàng đề thi</a></div>
+            <div class="nav-element"><a href="#">Kết quả</a></div>
+            <div class="nav-element"><a href="#">Thống kê</a></div>
+            <div class="nav-element"><a href="#">Tin tức</a></div>
+        </div>
+
+        <div class="menu-button">
+            <i class="ti-menu"></i>
+        </div>
+
+        <div class="avt-logo">
+            <a href="#">
+                <div class="img-avt"> <img src="https://code.ptit.edu.vn/2020/images/avt.png" alt="Logo"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="option-container" id="option-container">
+            <h1>Tạo mới bài thi</h1>
+            <div class="test-description">
+                <form id="description-form">
+                    <label for="examName">Tên bài thi:</label>
+                    <input type="text" id="examName" required>
+
+
+                    <div>
+                        <label for="examDate">Ngày thi:</label>
+                        <input type="date" id="examDate"></input>
+                    </div>
+
+                    <div>
+                        <label for="">Giờ thi:</label>
+                        <input type="time" id="timeStart"></input>
+                    </div>
+                </form>
+            </div>
+
+            <div class="select">
+                <form class="option-form" id="option-form">
+
+                    <label for="examType">Loại:</label>
+                    <select id="examType" required>
+                        <option value="free">Tự do</option>
+                        <option value="time-count">Tính giờ</option>
+                    </select>
+                    <br>
+                    <div id="specificTime" style="display: none;">
+                        <label for="specificExamTime">Thời gian (phút):</label>
+                        <input type="number" id="examTime">
+                    </div>
+
+                    <label for="numQuestions">Số lượng câu hỏi:</label>
+                    <input type="number" id="numQuestions">
+                    <br>
+
+
+                    <label for="fileOption">Hình thức: </label>
+                    <select id="fileOption">
+                        <option value="new">Nhập thủ công</option>
+                        <option value="upload">Tải lên file</option>
+                    </select>
+                    <br>
+                    <div id="fileUpload" style="display: none;">
+                        <label for="excelFile">Tải lên tệp (Excel):</label>
+                        <input type="file" id="excel-file" name="excelFile" accept=".xls,.xlsx">
+                    </div>
+
+                    <button type="submit">Tạo bài thi</button>
+                    <button onclick="Save()">
+                        <i class="ti-save"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="detail-container" id="detail-container">
+            <div id="questionsContainer">
+
+                <div class="empty-text">
+
+                </div>
+
+            </div>
+
+            <div>
+                <button class="add-btn" onclick="Add()"><i class="ti-plus"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fix-call">
+        <button><i class="ti-settings"></i></button>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+<script src="../js/upload-test.js"></script>
+
+</html>

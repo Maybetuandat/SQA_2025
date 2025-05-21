@@ -1,0 +1,69 @@
+extends ../../layout/default.pug
+include ../../mixins/permissionMatrix.pug
+include ../../mixins/pagination.pug
+block main
+  .container-fluid.py-4
+    +permission-matrix(roles, permissions, perMatrix)
+  br
+  .row.align-items-center.justify-content-between.mb-6
+    .d-flex.align-items-center
+      span.title Role:
+      .dropdown.ml-2
+        button.btn.btn-primary.dropdown-toggle#dropdownButton(type='button' data-bs-toggle='dropdown')
+          | #{roleName}
+        ul.dropdown-menu
+          each role in roles
+            li
+              a.dropdown-item-admin(data-role = role.Name) #{role.Name}
+          li
+            a.dropdown-item-admin(data-role = "all") Tất cả
+      .search-wrapper.d-flex.align-items-center.ml-2
+        input(type="text" class="form-control search-box" tim-kiem placeholder="--- Tìm kiếm ---" value=keyword)
+        button.btn.btn-light(btn-loc) Lọc
+  hr
+  h5 Phân quyền Admin
+  if adminList == null || adminList.length == 0
+    p Không có dữ liệu
+  else
+    table(class="table table-striped")
+      thead
+        tr
+          th ID
+          th Username
+          th Name
+          th Role
+          th Edit
+          th Delete
+      tbody
+        - if (adminList)
+            each admin, index in adminList
+              tr
+                td #{index + 1}
+                td #{admin.UserName}
+                td #{admin.FirstName}
+                td #{admin.Role_name}
+                td
+                  a.btn.btn-primary(onclick=`getAdminData('edit-admin','${admin.UserName}')`) Edit 
+                td
+                  a.btn.btn-danger Delete
+      .add-new-student#edit-admin
+          .add-new-student-container
+              h1 Chỉnh sửa
+              div
+                  label UserName
+                  input(type='text', id='edit-username', name='username', required)
+              div
+                  label Password
+                  input(type='password', id='edit-password-admin', name='password', required)
+              div
+                label(for='edit-role') Role
+                select#edit-role.form-control(name='edit-role', required)
+                  each role in roles
+                    option(value=role.Id)= role.Name
+
+              div
+                  button.btn.cur-p.ptit-color.btn-color(onclick="SaveEditAdmin('edit-admin')") Cập nhật
+                  button.btn.cur-p.ptit-color.btn-color(onclick="closeAdminPopup('edit-admin')") Hủy
+
+  //- +pagination(pagination)
+

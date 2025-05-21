@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Simple Login Form
+
+  body
+    form(action="/login/admin", method="POST")
+      .container
+        h2 Login
+        hr
+        .col-md-12
+            .row
+                .col-md-6
+                    .form-group
+                        label(for="username") UserName:
+                        input.form-login(type="text", id="username", placeholder="Enter your username", required)
+                    .form-group
+                        label(for="password") Password:
+                        input.form-login(type="password", id="password", placeholder="Enter your password", required)
+        br
+        .col-md-12.text-center
+        button.btn.btn-primary.hide#login() Login
+  script(src="/js/auth.js")
+

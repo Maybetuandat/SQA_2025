@@ -1,0 +1,84 @@
+include ../../mixins/floatingChat.pug
+doctype html
+html
+  head
+    title Siu
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css')
+    link(rel='stylesheet', href='/css/float-chat.css')
+    link(rel='stylesheet', href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+    script(src='/js/chat.user.js')
+    script(src='/js/float-chat.js')
+
+  body
+    //- - //console.log(room)
+    +floating-chat(room)
+    #chat-app
+      #chat.has-text-centered
+        section.hero.is-success
+          .hero-body
+            .container
+              h1.title UserChat
+  
+    script.
+        const socket = io();
+        var room
+        async function joinRoom() {
+          room = await getMessageRoom();
+          socket.emit('join', room);
+ 
+        }
+        joinRoom();
+        // Xử lý sự kiện khi gửi tin nhắn
+        $('#send-msg-button').click(function() {
+            const message = $('#chat-footer .text-box').text();
+            if(message === '') return;
+          // Gửi tin nhắn đến server với thông tin của tin nhắn và phòng
+            socket.emit('message', {name : room, message: message, room : room});
+            
+      
+            try{
+              var backendUrl = '/api/save-message'
+              var data = {
+                room: room,
+                message: message,
+                isAdmin: false
+              }
+              fetch(backendUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              })
+                .then(res => res.json())
+                .then(data => {
+                    //console.log(data)
+                })
+                .catch(err => {
+                    //console.log(err)
+                })
+              }
+              catch (err) {
+
+              }
+            $('#chat-footer .text-box').text('');
+            return false;
+        });
+
+        // Xử lý sự kiện nhận tin nhắn từ server
+        socket.on('message', function(data) {
+          const messageClass = data.name === 'Admin' ? 'other-message' : 'self-message';
+          const messageElement = $('<li>').addClass('message').addClass(messageClass).text(`${data.message}`);
+          $('#chat-messages').append(messageElement);
+          var chatMessages = document.getElementById('chat-messages');
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+
+
+          
+
+      // Xử lý sự kiện khi người dùng tham gia một phòng
+       

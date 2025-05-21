@@ -1,0 +1,47 @@
+
+include ../../mixins/testDescription
+doctype html
+html
+  head
+    title #{titlePage}
+    link(rel="stylesheet",  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css")
+    link(rel="stylesheet",  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
+    link(rel="stylesheet",  href="/css/index.css")
+    link(rel="stylesheet", href="/css/new.css")
+    link(rel="stylesheet", href="/css/edit-test.css")
+    link(rel="stylesheet", href="/css/loading.css")
+    
+
+  body
+    include ../../partials/header.pug
+    #loading
+      img(src="https://i.pinimg.com/originals/3d/6a/a9/3d6aa9082f3c9e285df9970dc7b762ac.gif", alt="Loading...")
+    .page-container
+      include ../../partials/nav-header.pug
+      main(class='main-content bgc-grey-100')
+        .main-container
+          block main
+
+            +test-description(metadata)
+            .container-fluid.mt-4
+                .card.mb-4
+                    .card-header.pb-0.ptit-color.c-white
+                        h6.mb-10 Danh sách câu hỏi
+                    .card-body
+                        #questionsContainer  
+
+    script(src="/js/edit-test.js")
+    script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js")
+    script(src="/js/side-bar/index.js")
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+            var questions = !{JSON.stringify(questions)};
+            render(questions);
+        });
+
+    
+    
+
+
+                

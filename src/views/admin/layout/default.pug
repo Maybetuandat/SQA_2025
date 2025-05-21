@@ -1,0 +1,93 @@
+doctype html
+html
+  head
+    title #{titlePage}
+    link(rel="stylesheet",  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css")
+    link(rel="stylesheet",  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
+    link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700")
+    link(rel="stylesheet",  href="/css/index.css")
+    script(src="/js/loading.js")
+    link(rel="stylesheet", href="/css/new.css")
+    link(rel="stylesheet", href="/css/edit-test.css")
+    link(rel="stylesheet", href="/css/admin-chat.css")
+    link(rel="stylesheet", href="/css/loading.css")
+    link(rel="stylesheet", href="/css/dashboard.css")
+    <script src="https://cdn.socket.io/socket.io-4.2.0.min.js"></script>
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    script(src="/js/authen.js")
+    style.
+      #clickEffect {
+        margin: -30px;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        background-color: pink;
+        border-radius: 100%;
+        pointer-events: none;
+        transform: scale(0);
+        opacity: 1;
+        z-index: 9999;
+      }
+      .hiep {
+        transition: transform 0.3s, opacity 0.3s;
+
+      }
+  body.app
+    #loading
+      img(src="https://i.pinimg.com/originals/3d/6a/a9/3d6aa9082f3c9e285df9970dc7b762ac.gif", alt="Loading...")
+    include ../partials/header.pug
+    .page-container
+      include ../partials/nav-header.pug
+      main(class='main-content bgc-grey-100')
+        .main-container
+          .alert.alert-danger.alert-dismissible.fade.show#myAlert(role="alert")
+            button.close(data-dismiss="alert" aria-label="Close")
+              span(aria-hidden="true") &times;
+            span#alertContent
+          block main
+          #clickEffect.hiep
+    include ../partials/setting.pug
+
+    script(src="/js/upload-test.js")
+    script(src="/js/permission.js")
+    script(src="/js/delete-test.js")
+    script(src="/js/pagination.js")
+    script(src="/js/result.js")
+    script(src="/js/student-account.js")
+    script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js")
+    script(src="/js/side-bar/index.js")
+    script(src="/js/profile.js")
+    script(src="/js/profile.js")
+    script.
+      document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("mousedown", function (e) {
+          console.log('click')
+          createClickEffect(e.pageX, e.pageY);
+        });
+      });
+
+      function createClickEffect(x, y) {
+        console.log(x + ' ' + y)
+        var clickEffect = document.getElementById("clickEffect");
+        clickEffect.style.left = x + "px";
+        clickEffect.style.top = y + "px";
+        clickEffect.style.transform = "scale(0)";
+        clickEffect.style.opacity = 1;
+        clickEffect.classList.add("hiep");
+        clickEffect.style.opacity = 0;
+        clickEffect.style.transform = "scale(1)";
+
+        setTimeout(() => {
+          clickEffect.style.opacity = 1;
+          clickEffect.style.transform = "scale(0)";
+          clickEffect.classList.remove("hiep");
+        }, 300);
+        //clickEffect.classList.remove("hiep");
+
+
+      }
+
+
