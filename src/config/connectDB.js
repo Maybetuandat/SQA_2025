@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
-require('dotenv').config()
-const sequelize = new Sequelize("blzgbosgrt5jimzh2ude", "uhv7bqutywjwtaga", "s9uR0I1udWuGpSWmat3d", {
-  host: "blzgbosgrt5jimzh2ude-mysql.services.clever-cloud.com",
+require("dotenv").config();
+const sequelize = new Sequelize("quiz", "maybetuandat", "123456", {
+  host: "localhost",
   port: "3306",
   dialect: "mysql",
 });
